@@ -23,6 +23,7 @@ from xml.etree import ElementTree
 from xml.parsers.expat import ExpatError
 import os
 import re
+import requests
 import copy
 import subprocess
 import ssl
@@ -33,7 +34,6 @@ from .exceptions import (
     JSSUnsupportedSearchMethodError, JSSFileUploadParameterError)
 from . import distribution_points
 from .tlsadapter import TLSAdapter
-from .contrib import requests
 from .tools import is_osx, is_linux
 try:
     from .contrib import FoundationPlist
