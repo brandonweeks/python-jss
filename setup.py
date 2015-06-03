@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+import re
 
-from jss import __version__
+from setuptools import setup, find_packages
 
 #http://stackoverflow.com/questions/10718767/have-the-same-readme-both-in-markdown-and-restructuredtext
 try:
@@ -12,8 +12,13 @@ except ImportError:
     print("Warning: pypandoc module not found, could not convert md to rst")
     read_md = lambda f: open(f, 'r').read()
 
+version = ''
+with open('jss/__init__.py', 'r') as fd:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(), re.MULTILINE).group(1)
+
 setup(name = 'python-jss',
-      version = __version__,
+      version = version,
       #py_modules=['jss', 'FoundationPlist'],
       packages = find_packages(),
       package_data = {
